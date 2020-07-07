@@ -1,0 +1,22 @@
+{
+  "name": "webshopapi",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.4.1",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "^4.16.4",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.9.20",
+    "morgan": "~1.9.1",
+    "parser": "^0.1.4",
+    "path": "^0.12.7"
+  }
+}
