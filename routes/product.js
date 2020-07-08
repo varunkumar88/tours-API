@@ -33,17 +33,10 @@ router.post('/products', (req, response, next) => {
 
 
 router.get('/products/:id', (req, res, next)=>{
-
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
-
-  // our products have array of tasks' ids and 
-  // we can use .populate() method to get the whole task objects
-  //                                   ^
-  //                                   |
-  //                                   |
   Product.findById(req.params.id).populate('tasks')
     .then(response => {
       res.status(200).json(response);
@@ -52,15 +45,11 @@ router.get('/products/:id', (req, res, next)=>{
       res.json(err);
     })
 })
-
-// PUT route => to update a specific Product
 router.put('/products/:id', (req, res, next)=>{
-
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
-
   Product.findByIdAndUpdate(req.params.id, req.body)
     .then(() => {
       res.json({ message: `Product with ${req.params.id} is updated successfully.` });
@@ -69,15 +58,12 @@ router.put('/products/:id', (req, res, next)=>{
       res.json(err);
     })
 })
-
-// DELETE route => to delete a specific Product
 router.delete('/products/:id', (req, res, next)=>{
 
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
-
   Product.findByIdAndRemove(req.params.id)
     .then(() => {
       res.json({ message: `Product with ${req.params.id} is removed successfully.` });

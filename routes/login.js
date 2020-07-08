@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router  = express.Router();
- 
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const { response } = require('../app');
@@ -12,19 +11,15 @@ router.get('/logout', (req, res) => {
   });
 
 router.post("/login", (req,res, next)=> {
-
     if (req.body.email === "" || req.body.password === "") {
         res.status(400).json( {
           errorMessage: "Please enter both, username and email to log in.",
         });
         return;
     }
-
-
      User
         .findOne({email: req.body.email})
-        .then((user)=> {
-            
+        .then((user)=> {      
             if(!user) {
                 res.status(404).json({
                     errorMessage: "The user does not exist"
@@ -32,7 +27,6 @@ router.post("/login", (req,res, next)=> {
 
                 return;
             } 
-
             bcrypt.compare(req.body.password, user.password, function(err, match) {
                 if(err){
                     console.log("error occurred in password comparison", err);

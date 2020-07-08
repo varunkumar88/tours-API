@@ -14,7 +14,7 @@ const reserveSchema = new Schema(
             type: Number,
             default: 0900
         },
-        pickUpLocation: {
+        location: {
             type: String,
         },
         destination: {
